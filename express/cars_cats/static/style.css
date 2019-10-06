@@ -1,0 +1,22 @@
+*{
+    text-align: center;
+    color: brown;
+    box-sizing: border-box;
+    
+}
+h1 , form{
+    border: 3px solid black ;
+    width: fit-content;
+    padding: 15px;
+    margin: auto;
+}
+img{
+    height: 300px;
+    width: 300px;
+    display: inline-block;
+    border: 10px solid brown ;
+    margin: 50px 20px;
+}
+#tringle{
+    width: 400px;
+}
