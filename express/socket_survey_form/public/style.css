@@ -1,0 +1,38 @@
+*{
+    color: brown;
+    box-sizing: border-box;
+    font-weight: bold;
+    
+}
+h1{
+    padding: 15px;
+    margin-left: 50px ;
+}
+form{
+    border: 3px dashed black ;
+    width: 600px;
+    padding: 15px;
+    margin: 5px 20px;
+    display: inline-block;
+    vertical-align: top
+}
+#data{
+    border: 3px solid gray ;
+    width: 600px;
+    min-height: 430px;
+    padding: 15px;
+    margin: 5px auto;
+    color: black;
+    display: inline-block;
+    vertical-align: top
+}
+.msg{
+    border: 3px solid green ;
+    width: 550px;
+    padding: 15px;
+    margin: 5px auto;
+    background-color: rgba(0, 128, 0, 0.438);
+    color: black;
+    display: inline-block;
+    vertical-align: top
+}
