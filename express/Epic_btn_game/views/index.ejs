@@ -1,0 +1,39 @@
+<html>
+
+<head>
+  <title>Sockets</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+      var socket = io(); //request for socket
+      $("#plusBtn").click(function () {
+        socket.emit('increase'); //send data to the server
+      });
+      $("#resetBtn").click(function () {
+        socket.emit('reset'); //send data to the server
+      });
+
+      socket.on('count', function (data) {
+        $('h1').text("The button has been pushed " + data.count + " times")
+      });
+
+    })
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <h1></h1>
+    <h3>Push the button to update the count!</h3>
+    <button id="plusBtn" type="submit" class="btn btn-primary">Push the epic button</button>
+    <button id="resetBtn" type="submit" class="btn btn-danger">Reset</button>
+  </div>
+</body>
+
+</html>
