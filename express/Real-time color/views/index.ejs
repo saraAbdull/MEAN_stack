@@ -1,0 +1,41 @@
+<html>
+
+<head>
+  <title>Sockets</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+      var socket = io(); //request for socket
+      $("#greenBtn").click(function () {
+        socket.emit('color',{color:"green"}); //send data to the server
+      });
+      $("#blueBtn").click(function () {
+        socket.emit('color',{color:"blue"}); //send data to the server
+      });
+      $("#pinkBtn").click(function () {
+        socket.emit('color',{color:"pink"}); //send data to the server
+      });
+
+      socket.on('back_color', function (data) {
+        $("body").css("background-color", data.color);
+      });
+
+    })
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <button id="greenBtn" type="submit" class="btn btn-secondary">Green</button>
+    <button id="blueBtn" type="submit" class="btn btn-secondary">Blue</button>
+    <button id="pinkBtn" type="submit" class="btn btn-secondary">Pink</button>
+  </div>
+</body>
+
+</html>

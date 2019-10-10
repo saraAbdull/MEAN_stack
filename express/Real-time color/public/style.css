@@ -1,0 +1,15 @@
+*{
+    box-sizing: border-box;
+    font-weight: bold;
+    text-align: center;
+}
+.container{
+    border: 3px dashed black;
+    margin: 20px auto;
+    width: fit-content;
+}
+button{
+    display: block !important;
+    margin: 20px auto !important;
+}
+
