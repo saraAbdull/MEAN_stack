@@ -1,0 +1,22 @@
+*{
+    box-sizing: border-box;
+    font-weight: bold;
+    text-align: center;
+}
+.containerr{
+    border: 3px dashed black;
+    margin: 20px auto;
+    width: 800px;
+    padding: 20px;
+}
+textarea{
+    text-align: left;
+    background-color: white !important;
+}
+.shadow-textarea textarea.form-control::placeholder {
+    font-weight: 300;
+}
+.shadow-textarea textarea.form-control {
+    padding-left: 0.8rem;
+}
+

@@ -1,0 +1,58 @@
+<html>
+
+<head>
+  <title>Sockets</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      var person = prompt("Please enter your name", "Harry Potter");
+
+      // while (person != null) {
+      //   document.getElementById("demo").innerHTML =
+      //   "Hello " + person + "! How are you today?";
+      // }
+      var socket = io(); //request for socket
+      socket.on('previous_chat', function (data) {
+        var text=""
+        for(var i=0 ; i<data.chat.length ; i++)
+          text= text+data.chat[i];
+        $('#chat').val(text);
+        $('#chat').scrollTop($('#chat')[0].scrollHeight);    
+      });
+
+      $("#send").click(function () {//send message to the server
+        var message = $('#msg').val();
+        socket.emit('send_msg',{name: person, msg: message}); 
+      });
+
+      socket.on('view_msg', function (data) {
+          $('#chat').val($('#chat').val()+data.msg);
+          $('#chat').scrollTop($('#chat')[0].scrollHeight);    
+
+      });
+
+    })
+  </script>
+</head>
+
+<body>
+  <h1>Chat Board</h1>
+  <div class="containerr">
+
+    <div class="form-group shadow-textarea">
+      <textarea id="chat" disabled="disabled"  class="form-control z-depth-1"  rows="10" placeholder="Chat messages...">
+      </textarea>
+      <br>
+      <textarea id="msg" class="form-control z-depth-1"  rows="1" placeholder="Enter your message here..."></textarea>
+    </div>
+    <button id="send" type="submit" class="btn btn-secondary">Send</button>
+
+  </div>
+</body>
+
+</html>
