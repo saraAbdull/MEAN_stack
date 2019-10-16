@@ -1,8 +1,10 @@
 const http = require('http');
 const fs = require('fs');
+console.log('REQUEST OBJECT', request);
+
 const server = http.createServer(function (request, response){
     console.log('client request URL: ', request.url);
-    
+
     if(request.url === '/cars') {
         fs.readFile('views/cars.html', 'utf8', function (errors, contents){
             response.writeHead(200, {'Content-Type': 'text/html'}); 
