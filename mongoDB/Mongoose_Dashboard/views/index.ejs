@@ -1,0 +1,21 @@
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<h1>Here All the Animals..</h1>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Count %></th>
+      <th>Brief description</th>
+    </tr>
+
+    <% for( var a=0 ; a<animals.length ; a++){ %>
+    <tr>
+      <td><%= animals[a].name %></td>
+      <td><%= animals[a].count %></td>
+      <td><%= animals[a].desc %></td>
+    </tr>
+    <% } %>
+  </table>
