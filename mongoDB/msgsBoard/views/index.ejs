@@ -1,0 +1,48 @@
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <body>
+<h1>The Dojo message board..</h1>
+<hr>
+<form id="msg_form" action="/addMsg" method="POST">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Name:</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+      placeholder="Enter your name" name="name">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Message:</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" name="msg"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Post Message</button>
+</form>
+<hr>
+<% for( var a=0 ; a<msgs.length ; a++){ %>
+  <div class="a_msg">
+  <p class="p">Name: <%= msgs[a].name %></p>
+  <p class="p">Message: <%= msgs[a].msg %></p>
+  <% for( var b=0 ; b<msgs[a].comments.length ; b++){ %>
+    <p class="cp">Neme:<%= msgs[a].comments[b].name %></p>
+    <p class="cp">Comment:<%= msgs[a].comments[b].comment %></p>
+    <br>
+  <% } %>
+  <form class="cmntForm" action="/addCmnt/<%= msgs[a]._id %>" method="POST">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Name:</label>
+      <input type="text" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp"
+        placeholder="Enter your name" name="name">
+    </div>
+  
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Comment:</label>
+      <textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="1" name="cmnt"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Comment</button>
+  </form>
+</div>
+<hr>
+
+<% } %>
+</body>
