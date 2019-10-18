@@ -16,4 +16,5 @@ app.use(express.urlencoded({extended: true}));
 
 
 require("./server/config/routes.js")(app)
+
 app.listen(8000, () => console.log("listening on port 8000"));
