@@ -1,13 +1,7 @@
 const express = require("express");
 const app = express();
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/first', {useNewUrlParser: true});
-const QuoteSchema = new mongoose.Schema({
-    name: String,
-    qot: String
-   }, {timestamps: true})
-   // create an object to that contains methods for mongoose to interface with MongoDB
-   const Quote = mongoose.model('Quote', QuoteSchema);
+
+require("./server/models/quote.js")
    
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
